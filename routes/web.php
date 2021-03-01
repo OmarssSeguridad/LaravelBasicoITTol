@@ -1,6 +1,11 @@
 <?php
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\EditorialController;
+use App\Http\Controllers\ClasificacionController;
+
 
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('menu', function () {
+    return view('layout.master');
+});
+Route::resource('libro', 'App\Http\Controllers\LibroController');
+Route::resource('editorial', 'App\Http\Controllers\EditorialController');
+Route::resource('clasificacion', 'App\Http\Controllers\ClasificacionController');
+
+/*
+Route::resource('libro', [LibroController::class]);
+Route::resource('editorial', [EditorialController::class]);
+Route::resource('clasificacion', [ClasificacionController::class]);
+*/
