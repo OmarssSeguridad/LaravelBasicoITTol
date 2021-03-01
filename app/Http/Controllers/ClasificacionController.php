@@ -14,8 +14,8 @@ class ClasificacionController extends Controller
      */
     public function index()
     {
-        $clasificacion = Clasificacion::where('status', 1)->get();
-        return view('clasificacion.consultaClasificacion', compact('clasificacion'));
+        $clasificaciones = Clasificacion::where('status', 1)->get();
+        return view('clasificacion.consultaClasificacion', compact('clasificaciones'));
     }
 
     /**

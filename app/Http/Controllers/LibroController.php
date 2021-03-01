@@ -14,7 +14,8 @@ class LibroController extends Controller
      */
     public function index()
     {
-        //
+        $libros = Libro::where('status', 1)->get();
+        return view('libro.consultaLibro', compact('libros'));
     }
 
     /**
@@ -24,7 +25,8 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+        return view('libro.altaLibro');
+
     }
 
     /**
@@ -35,7 +37,26 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'id_editorial' => 'required',
+            'id_clasificacion' => 'required',
+            'isbn' => 'required',
+            'tot_paginas' => 'required',
+        ]);
+
+        $libro = new Libro([
+            'nombre' => $request->get('nombre'),
+            'id_editorial' => $request->get('id_editorial'),
+            'id_clasificacion' => $request->get('id_clasificacion'),
+            'isbn' => $request->get('isbn'),
+            'tot_paginas' => $request->get('tot_paginas'),
+            'status' => 1,
+        ]);
+
+        $libro->save();
+
+        return redirect()->route('libro.index');
     }
 
     /**
@@ -57,7 +78,8 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+        return view('libro.editarLibro', compact('libro'));
+
     }
 
     /**
@@ -69,7 +91,22 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'id_editorial' => 'required',
+            'id_clasificacion' => 'required',
+            'isbn' => 'required',
+            'tot_paginas' => 'required',
+        ]);
+
+        $libro->nombre = $request->get('nombre');
+        $libro->id_editorial = $request->get('id_editorial');
+        $libro->id_clasificacion = $request->get('id_clasificacion');
+        $libro->isbn = $request->get('isbn');
+        $libro->tot_paginas = $request->get('tot_paginas');
+        
+        $libro->save();
+        return redirect()->route('libro.index');
     }
 
     /**
@@ -80,6 +117,8 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro->status=0;
+        $libro->save();
+        return redirect()->route('libro.index');
     }
 }

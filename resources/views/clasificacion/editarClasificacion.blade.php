@@ -5,7 +5,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header card-header-icon card-header-rose">
                         <div class="card-icon">
@@ -18,10 +18,10 @@
                             {{ csrf_field() }}
                             @method('PUT')
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="nombre" class="bmd-label-floating">Nombre</label>
-                                        <input type="text" value="{{$clasificacion->nombre}}"  name="nombre" class="form-control" id="nombre" required="true">
+                                        <input type="text" value="{{$clasificacion->nombre}}" name="nombre" class="form-control" id="nombre" required="true">
                                     </div>
                                 </div>
                             </div>

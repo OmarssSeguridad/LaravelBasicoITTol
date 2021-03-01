@@ -15,6 +15,7 @@ class CreateLibrosTable extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
             $table->string('isbn');
             $table->string('tot_paginas');
             $table->integer('status');

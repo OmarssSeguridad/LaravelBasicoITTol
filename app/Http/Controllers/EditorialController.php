@@ -14,8 +14,8 @@ class EditorialController extends Controller
      */
     public function index()
     {
-        $editorial = Editorial::where('status', 1)->get();
-        return view('editorial.consultaEditorial', compact('editorial'));
+        $editoriales = Editorial::where('status', 1)->get();
+        return view('editorial.consultaEditorial', compact('editoriales'));
     }
 
     /**

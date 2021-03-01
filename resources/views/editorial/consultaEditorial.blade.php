@@ -11,19 +11,19 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($editorial as $editoriales)
+        @foreach($editoriales as $editorial)
         <tr>
-            <th scope="row">{{$editoriales->id}}</th>
-            <td>{{$editoriales->nombre}}</td>
-            <td>{{$editoriales->descripcion}}</td>
+            <th scope="row">{{$editorial->id}}</th>
+            <td>{{$editorial->nombre}}</td>
+            <td>{{$editorial->descripcion}}</td>
             <td>
                 <div class="btn-group">
-                    <form method="POST" class="form-horizontal" role="form" action="{{route('editorial.destroy', $editoriales->id)}}">
+                    <form method="POST" class="form-horizontal" role="form" action="{{route('editorial.destroy', $editorial->id)}}">
                         {{ csrf_field() }}
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                     </form>
-                    <a href="{{route('editorial.edit', $editoriales->id)}}" class="btn btn-outline-warning">Editar</a>
+                    <a href="{{route('editorial.edit', $editorial->id)}}" class="btn btn-outline-warning">Editar</a>
 
                 </div>
             </td>
